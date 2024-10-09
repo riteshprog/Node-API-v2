@@ -3,7 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const productRoute = require("./routes/productRoute");
-const errorMiddleware = require("./middleware/errorMiddleware");
+const projectRoute = require("./routes/projectRoute");
+const userRoute = require("./routes/userRoute");
+const authRoute = require("./routes/authRoute");
+// const errorMiddleware = require("./middleware/errorMiddleware");
 const FRONTEND = process.env.FRONTEND;
 const corsOptions = {
   origin: FRONTEND,
@@ -20,6 +23,9 @@ const MONGO_URL = process.env.MONGO_URL;
 
 // Routes
 app.use("/api/products", productRoute);
+app.use("/api/projects", projectRoute);
+app.use("/api/users", userRoute);
+app.use("/api/auth", authRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello Node Api!");
@@ -27,7 +33,7 @@ app.get("/", (req, res) => {
 app.get("/blog", (req, res) => {
   res.send("Hello Blog my app!");
 });
-app.use(errorMiddleware);
+// app.use(errorMiddleware);
 
 mongoose
   .connect(MONGO_URL)
