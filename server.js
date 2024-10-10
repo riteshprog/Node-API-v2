@@ -9,8 +9,13 @@ const authRoute = require("./routes/authRoute");
 // const errorMiddleware = require("./middleware/errorMiddleware");
 const FRONTEND = process.env.FRONTEND;
 const corsOptions = {
-  origin: FRONTEND,
-  // origin: ["http://example.com", "http://127.0.0.1:5173"],
+  // origin: FRONTEND,
+  origin: [
+    "http://example.com",
+    "https://node-api-v2-gk84.onrender.com",
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
+  ],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
