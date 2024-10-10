@@ -16,10 +16,10 @@ router.post("/register", async (req, res) => {
   });
   try {
     const saveUser = await newUser.save();
-    res.status(201).send(saveUser);
+    return res.status(201).send(saveUser);
     console.log(saveUser);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
     console.log(err);
   }
 });
@@ -50,11 +50,11 @@ router.post("/login", async (req, res) => {
       { expiresIn: "3d" }
     );
     const { password, ...others } = user._doc;
-    res.status(200).json({ ...others, accessToken });
-    return;
+    return res.status(200).json({ ...others, accessToken });
+    
   } catch (err) {
-    res.status(500).json(err);
-    return;
+    return res.status(500).json(err);
+    
   }
 });
 
